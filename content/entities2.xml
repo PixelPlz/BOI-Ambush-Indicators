@@ -1,0 +1,5 @@
+<entities anm2root="gfx/" version="5" deathanm2="gfx/death_enemies.anm2">
+	<!-- billy bob -->
+	<entity name="Ambush Spawn Indicators Door Locker"   id="789" variant="789"   anm2path="003.043_Attack Fly.anm2"
+	shutdoors="true" boss="1" bossID="1" tags="nodelirium" gridCollision="none" />
+</entities>
