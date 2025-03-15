@@ -1,2 +1,2 @@
-# BOI-Ambush-Indicators
-Public repository for the mod "Ambush Spawn Indicators" for the Binding of Isaac: Repentance 
+# Ambush Spawn Indicators for the Binding of Isaac: Repentance
+steam download: https://steamcommunity.com/sharedfiles/filedetails/?id=3445014938
