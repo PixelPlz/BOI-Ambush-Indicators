@@ -110,6 +110,29 @@ mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.GideonUpdate, EntityType.ENTITY_
 
 
 
+-- Reward plate spawns
+local doRewardPlateQueue = {}
+
+function mod:PressurePlateUpdate(grid)
+	if grid:GetVariant() == PressurePlateVariant.REWARD and mod.SavedData.EventSpawns then
+		local grindex = grid:GetGridIndex()
+
+		-- Only queue spawns once after the button is pressed
+		if grid.State >= 1 and doRewardPlateQueue[grindex] then
+			mod:QueueWaveSpawns()
+		end
+		doRewardPlateQueue[grindex] = nil
+
+		-- Make the button queue its spawns
+		if grid:GetSprite():IsPlaying("Switched") then
+			doRewardPlateQueue[grindex] = true
+		end
+	end
+end
+mod:AddCallback(ModCallbacks.MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE, mod.PressurePlateUpdate, GridEntityType.GRID_PRESSURE_PLATE)
+
+
+
 -- Event spawns
 function mod:PreEventSpawn(effect)
 	if effect:IsDead() then

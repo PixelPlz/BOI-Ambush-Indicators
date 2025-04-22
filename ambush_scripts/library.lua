@@ -24,6 +24,19 @@ end
 
 
 
+-- Add spawn data for the given entity type
+---@param listName string
+---@param type integer
+---@param variant? integer
+---@param subtype? integer
+---@param data? any
+function AmbushSpawnIndicators:AddSpawnData(listName, type, variant, subtype, data)
+	local key = mod:TypeKey(type, variant, subtype)
+	mod.SpawnData[listName][key] = data or true
+end
+
+
+
 -- Check if the given entity is in the given list using its Type, Variant and Subtype as a string key
 ---@param list table
 ---@param entity Entity

@@ -15,12 +15,10 @@ function mod:LoadCompatibility()
 	--[[ Boss Butch ]]--
 	if BossButch then
 		-- Hide Sparky
-		local sparky = mod:TypeKey(BossButch.Entities.Sparky.Type, BossButch.Entities.Sparky.Variant)
-		mod.SpawnData.Hidden[sparky] = true
+		mod:AddSpawnData("Hidden", BossButch.Entities.Sparky.Type, BossButch.Entities.Sparky.Variant)
 
 		-- Snap his holes to the walls
-		local wallHole = mod:TypeKey(BossButch.Entities.SparkyWallHole.Type, BossButch.Entities.SparkyWallHole.Variant)
-		mod.SpawnData.SnapToWalls[wallHole] = true
+		mod:AddSpawnData("SnapToWalls", BossButch.Entities.SparkyWallHole.Type, BossButch.Entities.SparkyWallHole.Variant)
 	end
 
 
@@ -28,17 +26,16 @@ function mod:LoadCompatibility()
 	--[[ Fiend Folio ]]--
 	if FiendFolio then
 		-- Maze Runner extra marker
-		local mazeRunner = mod:TypeKey(FiendFolio.FF.MazeRunner.ID, FiendFolio.FF.MazeRunner.Var)
-		mod.SpawnData.MirroredMarker[mazeRunner] = true
+		mod:AddSpawnData("MirroredMarker", FiendFolio.FF.MazeRunner.ID, FiendFolio.FF.MazeRunner.Var)
 
 		-- Hidden entities
 		local hidden = {
-			mod:TypeKey(FiendFolio.FF.Aper.ID, 		 FiendFolio.FF.Aper.Var),
-			mod:TypeKey(FiendFolio.FF.OrgBashful.ID, FiendFolio.FF.OrgBashful.Var),
-			mod:TypeKey(FiendFolio.FF.OrgSpeedy.ID,  FiendFolio.FF.OrgSpeedy.Var),
+			FiendFolio.FF.Aper,
+			FiendFolio.FF.OrgBashful,
+			FiendFolio.FF.OrgSpeedy,
 		}
-		for i, key in pairs(hidden) do
-			mod.SpawnData.Hidden[key] = true
+		for i, entry in pairs(hidden) do
+			mod:AddSpawnData("Hidden", entry.ID, entry.Var)
 		end
 
 
@@ -60,9 +57,8 @@ function mod:LoadCompatibility()
 
 	--[[ Fall from Grace ]]--
 	if FFGRACE then
-		-- Tootie
-		local tootie = mod:TypeKey(FFGRACE.ENT.TOOTIE.id, FFGRACE.ENT.TOOTIE.variant)
-		mod.SpawnData.Hidden[tootie] = true
+		-- Hide Tootie
+		mod:AddSpawnData("Hidden", FFGRACE.ENT.TOOTIE.id, FFGRACE.ENT.TOOTIE.variant)
 
 
 		-- Stop the wall effects for queued Dirt Diggers
