@@ -58,3 +58,16 @@ AmbushSpawnIndicators.SpawnData = {
 		[ mod:TypeKey(EntityType.ENTITY_MAZE_ROAMER) ] = true,
 	},
 }
+
+
+
+-- Add spawn data for the given entity type
+---@param listName string The string key of the list in `AmbushSpawnIndicators.SpawnData`.
+---@param entityType EntityType
+---@param entityVariant? integer
+---@param entitySubType? integer
+---@param data? boolean | Vector Vector for `PositionOffset`, boolean for everything else. Defaults to `true`.
+function AmbushSpawnIndicators:AddSpawnData(listName, entityType, entityVariant, entitySubType, data)
+	local key = mod:TypeKey(entityType, entityVariant, entitySubType)
+	mod.SpawnData[listName][key] = data or true
+end
